@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
   const emailForm = document.getElementById('emailForm');
-  const downloadLink = document.getElementById('download-csv-link');
 
   if (emailForm) {
     emailForm.addEventListener('submit', function(e) {
@@ -29,40 +28,4 @@ document.addEventListener('DOMContentLoaded', () => {
       firstNameInput.focus();
     });
   }
-
-  if (downloadLink) {
-    downloadLink.addEventListener('click', (event) => {
-      event.preventDefault();
-      downloadCSV();
-    });
-  }
 });
-
-// Download CSV logic
-function downloadCSV() {
-  let entries = [];
-  try {
-    entries = JSON.parse(localStorage.getItem('entries')) || [];
-  } catch (error) {
-    console.error('Error parsing localStorage entries for CSV download:', error);
-    entries = [];
-  }
-  if (entries.length === 0) {
-    alert('No entries to download.');
-    return;
-  }
-  const header = ['First Name', 'Last Name', 'Email'];
-  const rows = entries.map(e => [e.firstName, e.lastName, e.email]);
-  const csvContent = [header, ...rows]
-    .map(row => row.map(field => `"${(field || '').replace(/"/g, '""')}"`).join(','))
-    .join('\r\n');
-  const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.setAttribute('href', url);
-  a.setAttribute('download', 'entries.csv');
-  a.style.visibility = 'hidden';
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-}
