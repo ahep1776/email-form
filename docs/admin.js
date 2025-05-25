@@ -70,6 +70,9 @@ document.addEventListener('DOMContentLoaded', function() {
   // Initial load of entries
   loadEntries();
 
+  // Refresh table when the tab/window is refocused
+  window.addEventListener('focus', loadEntries);
+
   function downloadAllCSV() {
     const entries = getStoredEntries(); // Use existing function
     if (entries.length === 0) {
