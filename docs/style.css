@@ -68,3 +68,69 @@ button[type="submit"]:hover {
 #download-csv-link:hover {
   opacity: 1;
 }
+
+/* Admin Page Styles */
+body > .container > h1 {
+  margin-bottom: 1.5rem;
+  text-align: center;
+  color: #fff; /* Assuming dark background from body */
+}
+
+#entries-table {
+  width: 100%;
+  margin-bottom: 1rem;
+  border-collapse: collapse;
+  background-color: #fff; /* Add background for readability on dark body */
+  border-radius: 4px; /* Optional: for rounded corners */
+  overflow: hidden; /* Optional: to ensure children respect border-radius */
+}
+
+#entries-table th, #entries-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+#entries-table th {
+  background-color: #f2f2f2;
+  color: #333; /* Ensure header text is dark for light background */
+}
+
+#download-all-csv, #delete-all-entries {
+  padding: 0.5rem 1rem;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: background-color 0.2s, opacity 0.2s; /* Combined transitions */
+}
+
+#download-all-csv {
+  margin-bottom: 1rem;
+  background: #4CAF50; /* Green */
+}
+
+#delete-all-entries {
+  margin-top: 1rem;
+  background: #f44336; /* Red */
+}
+
+#download-all-csv:hover, #delete-all-entries:hover {
+  opacity: 0.8;
+}
+
+#entries-table button {
+  padding: 0.25rem 0.5rem;
+  background-color: #e7e7e7;
+  color: #333;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+#entries-table button:hover {
+  background-color: #d4d4d4;
+}

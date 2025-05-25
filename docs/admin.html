@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Email Admin</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container"> <!-- Using existing container class for some basic centering/width restriction -->
+    <h1>Stored Entries</h1>
+    
+    <button type="button" id="download-all-csv">Download All as CSV</button>
+    
+    <table id="entries-table">
+      <thead>
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Entries will be populated here by JavaScript -->
+      </tbody>
+    </table>
+    
+    <button type="button" id="delete-all-entries">Delete All Entries</button>
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+</html>
