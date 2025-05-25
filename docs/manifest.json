@@ -1,0 +1,20 @@
+{
+  "name": "Email Form",
+  "short_name": "EmailForm",
+  "icons": [
+    {
+      "src": "form-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "form-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/email-form/index.html",
+  "display": "standalone",
+  "background_color": "#db2a44",
+  "theme_color": "#db2a44"
+}
