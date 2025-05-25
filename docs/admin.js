@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
   const tableBody = document.querySelector('#entries-table tbody');
+  const pageTitle = document.querySelector('#heading');
 
   function getStoredEntries() {
     let entries = [];
@@ -32,10 +33,19 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 
+  function updateTitleWithCount(count) {
+    if (pageTitle) {
+      pageTitle.textContent = `${count} Entries`;
+    }
+  }
+
   function loadEntries() {
     const entries = getStoredEntries();
     // Clear existing table rows
     tableBody.innerHTML = ''; 
+
+    // Update the title with the count
+    updateTitleWithCount(entries.length);
 
     if (entries.length === 0) {
       const row = tableBody.insertRow();
@@ -125,8 +135,4 @@ document.addEventListener('DOMContentLoaded', function() {
   if (deleteAllButton) {
     deleteAllButton.addEventListener('click', deleteAllEntries);
   }
-
-  // Make functions globally accessible if needed by other scripts or for event handlers in HTML
-  // (though for this plan, event listeners will be added in subsequent steps for download/delete all)
-  // window.deleteEntry = deleteEntry; // Not strictly needed if all event listeners are set up within this file
 });
