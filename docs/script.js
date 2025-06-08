@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Clear the form and refocus the first name field
       this.reset();
-      firstNameInput.focus();
+      emailInput.focus();
     });
   }
 });
