@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   let allEntries = [];
   let currentPage = 1;
-  let entriesPerPage = 20; // Default value, will be configurable
+  let entriesPerPage = 10; // Default value, will be configurable
 
   function getStoredEntries() {
     let entries = [];
@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   function loadEntries() {
-    allEntries = getStoredEntries();
+    allEntries = getStoredEntries().reverse(); // Reverse the order of entries
     updateTitleWithCount(allEntries.length); // Update title with total count
 
     // Reset current page if it's out of bounds (e.g., after deleting all items on the last page)
@@ -130,8 +130,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const perPageSelect = document.createElement('select');
     perPageSelect.id = 'entries-per-page-select';
-    const options = [20, 50, 100, 0]; // 0 for "All"
-    const optionLabels = { 20: '20', 50: '50', 100: '100', 0: 'All' };
+    const options = [10, 20, 50, 100, 0]; // 0 for "All"
+    const optionLabels = { 10: '10', 20: '20', 50: '50', 100: '100', 0: 'All' };
 
     options.forEach(num => {
       const option = document.createElement('option');
