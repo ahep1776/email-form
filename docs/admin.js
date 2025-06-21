@@ -19,7 +19,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
   function saveEntries(entries) {
     try {
-      localStorage.setItem('entries', JSON.stringify(entries));
+      // Create a new array from entries to avoid mutating the original
+      // allEntries array, then reverse it for storage.
+      const entriesToStore = [...entries].reverse();
+      localStorage.setItem('entries', JSON.stringify(entriesToStore));
     } catch (error) {
       console.error('Error saving entries to localStorage:', error);
     }
@@ -207,7 +210,7 @@ document.addEventListener('DOMContentLoaded', function() {
       return;
     }
     const header = ['First Name', 'Last Name', 'Email'];
-    const rows = entries.map(e => [
+    const rows = entriesToDownload.map(e => [ // Fixed: Changed 'entries' to 'entriesToDownload'
       e.firstName || '', 
       e.lastName || '', 
       e.email || ''
@@ -253,3 +256,58 @@ document.addEventListener('DOMContentLoaded', function() {
     deleteAllButton.addEventListener('click', deleteAllEntries);
   }
 });
+
+// Function to add fake data for debugging
+function fillTableWithFakeData() {
+  let existingEntries = [];
+  try {
+    existingEntries = JSON.parse(localStorage.getItem('entries')) || [];
+  } catch (error) {
+    console.error('Error retrieving existing entries for fake data:', error);
+    // Proceed with an empty array if parsing fails
+    existingEntries = [];
+  }
+
+  const newEntries = [];
+
+  for (let i = 1; i <= 200; i++) {
+    // Create more unique fake data by incorporating a timestamp or a random element
+    const timestamp = Date.now();
+    const randomSuffix = Math.floor(Math.random() * 10000);
+    newEntries.push({
+      firstName: `FakeFirst${i}_${randomSuffix}`,
+      lastName: `FakeLast${i}_${timestamp}`,
+      email: `fakeuser${i}_${timestamp}_${randomSuffix}@example.com`
+    });
+  }
+
+  // Entries in localStorage should be oldest first.
+  // existingEntries are already in that order. New entries are appended.
+  const combinedEntries = existingEntries.concat(newEntries);
+
+  try {
+    localStorage.setItem('entries', JSON.stringify(combinedEntries));
+    console.log(`Successfully added 200 fake entries to localStorage. Total entries: ${combinedEntries.length}`);
+    if (typeof loadEntries === 'function') {
+        // If admin page is open, try to refresh it.
+        // This is a soft dependency; function primarily just updates localStorage.
+        // loadEntries();
+        // Decided against calling loadEntries directly to stick to the requirement
+        // that it "does not need to have any affordance in the UI".
+        // The user can refresh the admin page to see changes.
+        alert('200 fake entries added to localStorage. Please refresh the admin page if it is open.');
+    } else {
+        alert('200 fake entries added to localStorage.');
+    }
+  } catch (error) {
+    console.error('Error saving fake entries to localStorage:', error);
+    alert('Failed to add fake entries. Check console for details.');
+  }
+}
+
+// Ensure it's globally accessible
+if (typeof globalThis !== 'undefined') {
+  globalThis.fillTableWithFakeData = fillTableWithFakeData;
+} else if (typeof window !== 'undefined') {
+  window.fillTableWithFakeData = fillTableWithFakeData; // Fallback for older environments
+}
