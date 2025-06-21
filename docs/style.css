@@ -39,7 +39,6 @@ body {
   align-items: stretch; /* Keep this for children like buttons */
   padding: 1rem; /* Add some padding inside the container */
   border-radius: 8px; /* Optional: rounded corners for the container */
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Optional: add some shadow */
 }
 
 /* New wrapper for table scrolling */
