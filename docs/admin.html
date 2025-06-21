@@ -10,12 +10,11 @@
   <div class="container"> <!-- Using existing container class for some basic centering/width restriction -->
     <h1 id="heading">Stored Entries</h1>
     
-    <button type="button" id="download-all-csv">Download All as CSV</button>
-    
-    <table id="entries-table">
-      <thead>
-        <tr>
-          <th>First Name</th>
+    <div class="table-wrapper"> <!-- Added table wrapper -->
+      <table id="entries-table">
+        <thead>
+          <tr>
+            <th>First Name</th>
           <th>Last Name</th>
           <th>Email</th>
           <th>Action</th>
@@ -25,7 +24,13 @@
         <!-- Entries will be populated here by JavaScript -->
       </tbody>
     </table>
+    </div> <!-- Closed table wrapper -->
+
+    <div id="pagination-controls" class="pagination-controls">
+      <!-- Pagination controls will be inserted here by JavaScript -->
+    </div>
     
+    <button type="button" id="download-all-csv">Download All as CSV</button>
     <button type="button" id="delete-all-entries">Delete All Entries</button>
   </div>
 
