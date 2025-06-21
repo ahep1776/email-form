@@ -6,14 +6,31 @@ html, body {
 body {
   min-height: 100vh;
   background: #db2a44;
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* Center content horizontally */
+  /* display: flex; */ /* Removed for general body */
+  /* flex-direction: column; */ /* Removed for general body */
+  /* align-items: center; */ /* Removed for general body - container will handle centering */
   padding-top: 2rem; /* Add some padding at the top */
   padding-bottom: 2rem; /* Add some padding at the bottom */
   box-sizing: border-box; /* Ensure padding doesn't add to height */
 }
+
+/* Specific styles for the main email form page body */
+.form-page-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Vertically center the .container */
+  align-items: center; /* Horizontally center the .container */
+  padding-top: 0; /* Override general body padding */
+  padding-bottom: 0; /* Override general body padding */
+  /* min-height: 100vh; is inherited and ensures it fills height */
+  /* goal is no scroll, so content must fit or be scrollable internally if too large */
+}
+
+/* General container, used by both form and admin page */
 .container {
+  /* Ensure container is centered on admin page if body is not flex */
+  margin-left: auto;
+  margin-right: auto;
   width: 90%; /* Use percentage for responsiveness */
   max-width: 800px; /* Increased max-width for table content */
   display: flex;
@@ -30,8 +47,9 @@ body {
   max-height: 70vh; /* Set a max-height, e.g., 70% of viewport height */
   overflow-y: auto; /* Add vertical scroll if content exceeds max-height */
   width: 100%; /* Ensure it takes full width of its parent */
-  border: 1px solid #ddd; /* Optional: border around the scrollable area */
+  /* border: 1px solid #ddd; */ /* Removed optional border */
   border-radius: 4px; /* Match table's border-radius */
+  background-color: #fff; /* Add white background to prevent red line */
 }
 
 .logo {
@@ -143,7 +161,7 @@ body > .container > h1 {
 
 .pagination-controls label {
   font-size: 0.9rem;
-  color: #333; /* Darker text for better readability on light .container background */
+  color: #fff; /* Changed to white for dark background */
 }
 
 .pagination-controls select {
@@ -177,7 +195,7 @@ body > .container > h1 {
 
 .pagination-controls span {
   font-size: 0.9rem;
-  color: #333;
+  color: #fff; /* Changed to white for dark background */
   margin: 0 0.5rem; /* Spacing around page info */
 }
 
