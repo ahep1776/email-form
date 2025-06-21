@@ -1,25 +1,40 @@
 html, body {
-  height: 100%;
   margin: 0;
   padding: 0;
+  font-family: Arial, sans-serif; /* Moved font-family here */
 }
 body {
   min-height: 100vh;
   background: #db2a44;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  font-family: Arial, sans-serif;
+  align-items: center; /* Center content horizontally */
+  padding-top: 2rem; /* Add some padding at the top */
+  padding-bottom: 2rem; /* Add some padding at the bottom */
+  box-sizing: border-box; /* Ensure padding doesn't add to height */
 }
 .container {
-  width: 100%;
-  max-width: 350px;
+  width: 90%; /* Use percentage for responsiveness */
+  max-width: 800px; /* Increased max-width for table content */
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  align-items: stretch;
+  align-items: stretch; /* Keep this for children like buttons */
+  background-color: #f0f0f0; /* Added a light background for the container */
+  padding: 1rem; /* Add some padding inside the container */
+  border-radius: 8px; /* Optional: rounded corners for the container */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Optional: add some shadow */
 }
+
+/* New wrapper for table scrolling */
+.table-wrapper {
+  max-height: 70vh; /* Set a max-height, e.g., 70% of viewport height */
+  overflow-y: auto; /* Add vertical scroll if content exceeds max-height */
+  width: 100%; /* Ensure it takes full width of its parent */
+  border: 1px solid #ddd; /* Optional: border around the scrollable area */
+  border-radius: 4px; /* Match table's border-radius */
+}
+
 .logo {
   width: 100%;
   text-align: center;
@@ -85,15 +100,16 @@ body > .container > h1 {
   cursor: pointer;
   font-size: 0.95rem;
   transition: background-color 0.2s, opacity 0.2s; /* Combined transitions */
+  /* Margins will be handled by the flex container's gap property */
 }
 
 #download-all-csv {
-  margin-bottom: 1rem;
+  /* margin-bottom: 1rem; */ /* Removed */
   background: #4CAF50; /* Green */
 }
 
 #delete-all-entries {
-  margin-top: 1rem;
+  /* margin-top: 1rem; */ /* Removed */
   background: #f44336; /* Red */
 }
 
@@ -114,4 +130,54 @@ body > .container > h1 {
 
 #entries-table button:hover {
   background-color: #d4d4d4;
+}
+
+/* Pagination Controls Styles */
+.pagination-controls {
+  display: flex;
+  justify-content: space-between; /* Align items with space between */
+  align-items: center;
+  padding: 0.75rem 0; /* Add some vertical padding */
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  gap: 0.5rem; /* Add gap between items if they wrap */
+}
+
+.pagination-controls label {
+  font-size: 0.9rem;
+  color: #333; /* Darker text for better readability on light .container background */
+}
+
+.pagination-controls select {
+  padding: 0.35rem 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 0.9rem;
+  margin-right: 1rem; /* Space after the select */
+}
+
+.pagination-controls button {
+  padding: 0.35rem 0.75rem;
+  background-color: #5cb85c; /* A slightly different green */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.2s;
+}
+
+.pagination-controls button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.pagination-controls button:hover:not(:disabled) {
+  background-color: #4cae4c; /* Darker green on hover */
+}
+
+.pagination-controls span {
+  font-size: 0.9rem;
+  color: #333;
+  margin: 0 0.5rem; /* Spacing around page info */
 }
