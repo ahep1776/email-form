@@ -20,7 +20,6 @@ body {
   flex-direction: column;
   gap: 1.5rem;
   align-items: stretch; /* Keep this for children like buttons */
-  background-color: #f0f0f0; /* Added a light background for the container */
   padding: 1rem; /* Add some padding inside the container */
   border-radius: 8px; /* Optional: rounded corners for the container */
   box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Optional: add some shadow */
