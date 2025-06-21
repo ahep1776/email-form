@@ -19,6 +19,24 @@
     <button type="submit">Submit</button>
   </form>
   <script src="script.js"></script>
+
+  <!-- Modal Structure -->
+  <div id="confirmationModal" class="modal" style="display: none;">
+    <div class="modal-content">
+      <h2>Confirm Your Details</h2>
+      <div id="modalData">
+        <p><strong>Email:</strong> <span id="modalEmail"></span></p>
+        <p><strong>First Name:</strong> <span id="modalFirstName"></span></p>
+        <p><strong>Last Name:</strong> <span id="modalLastName"></span></p>
+      </div>
+      <div class="modal-buttons">
+        <button id="confirmBtn">Confirm</button>
+        <button id="editBtn">Edit</button>
+        <button id="clearBtn">Clear</button>
+      </div>
+    </div>
+  </div>
+
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {

@@ -1,5 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
   const emailForm = document.getElementById('emailForm');
+  const modal = document.getElementById('confirmationModal');
+  const confirmBtn = document.getElementById('confirmBtn');
+  const editBtn = document.getElementById('editBtn');
+  const clearBtn = document.getElementById('clearBtn');
+  const modalEmail = document.getElementById('modalEmail');
+  const modalFirstName = document.getElementById('modalFirstName');
+  const modalLastName = document.getElementById('modalLastName');
+
+  let currentFormData = {};
 
   if (emailForm) {
     emailForm.addEventListener('submit', function(e) {
@@ -8,24 +17,77 @@ document.addEventListener('DOMContentLoaded', () => {
       const lastNameInput = this.elements['lastName'];
       const emailInput = this.elements['email'];
 
-      const firstName = firstNameInput.value;
-      const lastName = lastNameInput.value;
-      const email = emailInput.value;
+      currentFormData = {
+        firstName: firstNameInput.value,
+        lastName: lastNameInput.value,
+        email: emailInput.value,
+      };
 
-      // Get existing entries or initialize array
+      // Populate modal
+      modalEmail.textContent = currentFormData.email;
+      modalFirstName.textContent = currentFormData.firstName;
+      modalLastName.textContent = currentFormData.lastName;
+
+      // Show modal
+      modal.style.display = 'block';
+    });
+  }
+
+  if (modal) {
+    confirmBtn.addEventListener('click', () => {
+      // Save data to localStorage
       let entries = [];
       try {
         entries = JSON.parse(localStorage.getItem('entries')) || [];
-      } catch (error) { // Changed 'e' to 'error' for clarity
-        console.error('Error parsing localStorage entries:', error); // Added a console log for the error
+      } catch (error) {
+        console.error('Error parsing localStorage entries:', error);
         entries = [];
       }
-      entries.push({ firstName, lastName, email });
+      entries.push(currentFormData);
       localStorage.setItem('entries', JSON.stringify(entries));
 
-      // Clear the form and refocus the first name field
-      this.reset();
-      emailInput.focus();
+      // Clear the form
+      emailForm.reset();
+      // Hide modal
+      modal.style.display = 'none';
+      // Refocus the email field (assuming email is the first field typically)
+      if (emailForm.elements['email']) {
+        emailForm.elements['email'].focus();
+      }
+      currentFormData = {}; // Clear stored form data
+    });
+
+    editBtn.addEventListener('click', () => {
+      // Just hide the modal, form retains its values
+      modal.style.display = 'none';
+      // Optionally, focus the first field that had data or the first field in general
+      if (emailForm.elements['email']) {
+         emailForm.elements['email'].focus();
+      }
+    });
+
+    clearBtn.addEventListener('click', () => {
+      // Clear the form
+      emailForm.reset();
+      // Hide modal
+      modal.style.display = 'none';
+      // Refocus the email field
+      if (emailForm.elements['email']) {
+        emailForm.elements['email'].focus();
+      }
+      currentFormData = {}; // Clear stored form data
+    });
+
+    // Close modal if user clicks outside of the modal content (optional)
+    window.addEventListener('click', (event) => {
+      if (event.target === modal) {
+        modal.style.display = 'none';
+        // Decide if form should be reset or retain data.
+        // For now, let's assume "Edit" behavior (retain data)
+        if (emailForm.elements['email']) {
+           emailForm.elements['email'].focus();
+        }
+      }
     });
   }
 });
