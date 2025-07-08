@@ -8,7 +8,16 @@
 </head>
 <body class="admin-page-body">
   <div class="container"> <!-- Using existing container class for some basic centering/width restriction -->
-    <h1 id="heading">Stored Entries</h1>
+    <div class="controls-wrapper">
+      <div class="button-row-1">
+        <span id="entry-count">0</span> <!-- Initial count -->
+        <button type="button" id="download-all-csv">CSV</button> <!-- Changed text -->
+        <button type="button" id="delete-all-entries">X</button> <!-- Changed text -->
+      </div>
+      <div id="pagination-controls" class="pagination-controls">
+        <!-- Pagination controls will be inserted here by JavaScript -->
+      </div>
+    </div>
     
     <div class="table-wrapper"> <!-- Added table wrapper -->
       <table id="entries-table">
@@ -25,13 +34,6 @@
         </tbody>
       </table>
     </div> <!-- Closed table wrapper -->
-
-    <div id="pagination-controls" class="pagination-controls">
-      <!-- Pagination controls will be inserted here by JavaScript -->
-    </div>
-    
-    <button type="button" id="download-all-csv">Download All as CSV</button>
-    <button type="button" id="delete-all-entries">Delete All Entries</button>
   </div>
 
   <script src="admin.js"></script>

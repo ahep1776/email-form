@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
   const tableBody = document.querySelector('#entries-table tbody');
-  const pageTitle = document.querySelector('#heading');
+  // const pageTitle = document.querySelector('#heading'); // No longer dynamically changing this
+  const entryCountSpan = document.getElementById('entry-count');
 
   let allEntries = [];
   let currentPage = 1;
@@ -47,8 +48,11 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   function updateTitleWithCount(count) {
-    if (pageTitle) {
-      pageTitle.textContent = `${count} Stored Entries`; // Kept original wording
+    // if (pageTitle) { // Original line, commented out as pageTitle variable is also commented out
+    //   pageTitle.textContent = `${count} Stored Entries`;
+    // }
+    if (entryCountSpan) {
+      entryCountSpan.textContent = count; // Update the new span with only the count
     }
   }
 

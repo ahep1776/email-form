@@ -15,28 +15,29 @@ body {
 }
 
 /* Admin page specific body styles for no-scroll behavior */
-html.admin-scroll-lock,
-body.admin-page-body {
-  overflow: hidden; /* Prevent scrolling on html and body for admin page */
-  height: 100%; /* Ensure body takes full viewport height */
+/* html.admin-scroll-lock, */ /* No longer locking scroll */
+/* body.admin-page-body { */ /* No longer locking scroll */
+  /* overflow: hidden; */ /* Prevent scrolling on html and body for admin page */
+  /* height: 100%; */ /* Ensure body takes full viewport height */
   /* padding-top/bottom removed for admin-page-body as container will handle it */
-}
+/* } */
 
 body.admin-page-body {
-  display: flex;
-  flex-direction: column;
+  display: flex; /* Keep flex for centering container */
+  flex-direction: column; /* Keep flex for centering container */
   padding-top: 0; /* Override general body padding */
   padding-bottom: 0; /* Override general body padding */
   /* min-height: 100vh; is inherited and ensures it fills height */
+  /* HTML and Body will now scroll naturally */
 }
 
 /* Make container on admin page fill height and manage its own potential overflow */
 body.admin-page-body > .container {
-  flex-grow: 1; /* Allow container to grow and fill available vertical space */
+  /* flex-grow: 1; */ /* No longer needed, page scrolls */
   display: flex; /* Use flex for children of container */
   flex-direction: column; /* Stack children vertically */
-  overflow-y: auto; /* Allow vertical scroll for container content if it exceeds its bounds */
-  min-height: 0; /* Important for flex children that need to scroll */
+  /* overflow-y: auto; */ /* No longer needed, page scrolls */
+  /* min-height: 0; */ /* No longer needed, page scrolls */
   padding-top: 1rem; /* Restore some padding */
   padding-bottom: 1rem; /* Restore some padding */
 }
@@ -71,15 +72,63 @@ body.admin-page-body > .container {
 
 /* New wrapper for table scrolling */
 .table-wrapper {
-  flex-grow: 1; /* Allow table wrapper to take available space in flex column */
-  flex-shrink: 1; /* Allow table wrapper to shrink if needed */
-  overflow-y: auto; /* Add vertical scroll if content exceeds max-height */
-  min-height: 0; /* Crucial for scrollable flex children */
+  /* flex-grow: 1; */ /* No longer needed, page scrolls */
+  /* flex-shrink: 1; */ /* No longer needed */
+  /* overflow-y: auto; */ /* No longer needed, page scrolls */
+  /* min-height: 0; */ /* No longer needed */
   width: 100%; /* Ensure it takes full width of its parent */
   /* border: 1px solid #ddd; */ /* Removed optional border */
   border-radius: 4px; /* Match table's border-radius */
   background-color: #fff; /* Add white background to prevent red line */
 }
+
+/* Styles for the new controls wrapper and its rows */
+.controls-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem; /* Space between the two rows of controls */
+  margin-bottom: 1rem; /* Space below the controls block */
+  flex-shrink: 0; /* Prevent shrinking */
+}
+
+.button-row-1 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* Space between items in the first row */
+}
+
+#entry-count {
+  font-size: 0.9rem;
+  color: #fff; /* White text for dark background */
+  padding: 0.5rem 0.75rem; /* Adjusted padding to match X button */
+  background-color: #6c757d; /* Bootstrap secondary-like color */
+  border-radius: 4px;
+  line-height: 1; /* Ensure text is centered vertically */
+  /* margin-right: auto; */ /* Removed to allow natural flex spacing with gap */
+}
+
+/* Ensure Download CSV button takes available space */
+.button-row-1 #download-all-csv {
+  flex-grow: 1;
+}
+
+/* Style Delete All button as a small X */
+.button-row-1 #delete-all-entries {
+  background-color: #dc3545; /* Bootstrap danger-like color */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 0.5rem 0.75rem; /* Adjust padding for X */
+  font-size: 0.95rem; /* Adjust font size for X */
+  font-weight: bold;
+  line-height: 1; /* Ensure X is centered vertically */
+  flex-shrink: 0; /* Prevent shrinking */
+  /* Text content will be changed to 'X' in HTML or JS if needed, for now, it's just styled */
+}
+.button-row-1 #delete-all-entries:hover {
+  opacity: 0.8;
+}
+
 
 .logo {
   width: 100%;
@@ -112,12 +161,12 @@ button[type="submit"]:hover {
 }
 
 /* Admin Page Styles */
-body.admin-page-body > .container > h1 { /* More specific selector */
-  margin-bottom: 0; /* Gap will handle spacing */
-  text-align: center;
-  color: #fff; /* Assuming dark background from body */
-  flex-shrink: 0; /* Prevent shrinking */
-}
+/* body.admin-page-body > .container > h1 { */ /* More specific selector - REMOVED as h1 is gone */
+  /* margin-bottom: 0; */ /* Gap will handle spacing */
+  /* text-align: center; */
+  /* color: #fff; */ /* Assuming dark background from body */
+  /* flex-shrink: 0; */ /* Prevent shrinking */
+/* } */
 
 #entries-table {
   width: 100%;
