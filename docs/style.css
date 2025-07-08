@@ -46,9 +46,9 @@ body.admin-page-body > .container {
 .form-page-body {
   display: flex;
   flex-direction: column;
-  justify-content: center; /* Vertically center the .container */
+  justify-content: flex-start; /* Align to the top */
   align-items: center; /* Horizontally center the .container */
-  padding-top: 0; /* Override general body padding */
+  padding-top: 2rem; /* Add padding at the top */
   padding-bottom: 0; /* Override general body padding */
   /* min-height: 100vh; is inherited and ensures it fills height */
   /* goal is no scroll, so content must fit or be scrollable internally if too large */
@@ -112,10 +112,11 @@ button[type="submit"]:hover {
 }
 
 /* Admin Page Styles */
-body > .container > h1 {
-  margin-bottom: 1.5rem;
+body.admin-page-body > .container > h1 { /* More specific selector */
+  margin-bottom: 0; /* Gap will handle spacing */
   text-align: center;
   color: #fff; /* Assuming dark background from body */
+  flex-shrink: 0; /* Prevent shrinking */
 }
 
 #entries-table {
@@ -146,11 +147,11 @@ body > .container > h1 {
   cursor: pointer;
   font-size: 0.95rem;
   transition: background-color 0.2s, opacity 0.2s; /* Combined transitions */
+  flex-shrink: 0; /* Prevent shrinking */
   /* Margins will be handled by the flex container's gap property */
 }
 
 #download-all-csv {
-  /* margin-bottom: 1rem; */ /* Removed */
   background: #4CAF50; /* Green */
 }
 
@@ -186,6 +187,7 @@ body > .container > h1 {
   padding: 0.75rem 0; /* Add some vertical padding */
   flex-wrap: wrap; /* Allow wrapping on smaller screens */
   gap: 0.5rem; /* Add gap between items if they wrap */
+  flex-shrink: 0; /* Prevent shrinking */
 }
 
 .pagination-controls label {
