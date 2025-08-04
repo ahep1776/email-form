@@ -160,6 +160,31 @@ button[type="submit"]:hover {
   background: #2a4066;
 }
 
+.submit-container {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.submit-container button[type="submit"] {
+  flex-grow: 1;
+}
+
+#resetBtn {
+  padding: 0.5rem 1rem;
+  background: #6c757d;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+#resetBtn:hover {
+  background: #5a6268;
+}
+
 /* Admin Page Styles */
 /* body.admin-page-body > .container > h1 { */ /* More specific selector - REMOVED as h1 is gone */
   /* margin-bottom: 0; */ /* Gap will handle spacing */
@@ -343,28 +368,19 @@ button[type="submit"]:hover {
 }
 
 #confirmBtn {
-  background-color: #4CAF50; /* Green */
+  background-color: #007bff; /* Bright Blue */
   color: white;
 }
 
 #confirmBtn:hover {
-  background-color: #45a049;
+  background-color: #0056b3;
 }
 
 #editBtn {
-  background-color: #ffc107; /* Amber */
-  color: #333;
+  background-color: #6c757d; /* Dull Grey */
+  color: #fff;
 }
 
 #editBtn:hover {
-  background-color: #e0a800;
-}
-
-#clearBtn {
-  background-color: #f44336; /* Red */
-  color: white;
-}
-
-#clearBtn:hover {
-  background-color: #da190b;
+  background-color: #5a6268;
 }

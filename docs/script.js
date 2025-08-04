@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const modal = document.getElementById('confirmationModal');
   const confirmBtn = document.getElementById('confirmBtn');
   const editBtn = document.getElementById('editBtn');
-  const clearBtn = document.getElementById('clearBtn');
+  const resetBtn = document.getElementById('resetBtn');
   const modalEmail = document.getElementById('modalEmail');
   const modalFirstName = document.getElementById('modalFirstName');
   const modalLastName = document.getElementById('modalLastName');
@@ -66,11 +66,9 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    clearBtn.addEventListener('click', () => {
+    resetBtn.addEventListener('click', () => {
       // Clear the form
       emailForm.reset();
-      // Hide modal
-      modal.style.display = 'none';
       // Refocus the email field
       if (emailForm.elements['email']) {
         emailForm.elements['email'].focus();
