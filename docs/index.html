@@ -13,7 +13,7 @@
       <!-- Replace with your logo image if available -->
       <img src="ahep-logo.svg" alt="AHEP Logo">
     </div>
-    <input type="email" name="email" placeholder="Email" required>
+    <input type="text" name="email" placeholder="Email / Phone" required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}|[\d\s\+\(\)\.-]{7,}" title="Please enter a valid email address or phone number">
     <input type="text" name="firstName" placeholder="First Name">
     <input type="text" name="lastName" placeholder="Last Name">
     <div class="submit-container">
@@ -28,7 +28,7 @@
     <div class="modal-content">
       <h2>Confirm Your Details</h2>
       <div id="modalData">
-        <p><strong>Email:</strong> <span id="modalEmail"></span></p>
+        <p><strong>Email / Phone:</strong> <span id="modalEmail"></span></p>
         <p><strong>First Name:</strong> <span id="modalFirstName"></span></p>
         <p><strong>Last Name:</strong> <span id="modalLastName"></span></p>
       </div>

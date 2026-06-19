@@ -213,7 +213,7 @@ document.addEventListener('DOMContentLoaded', function() {
       alert('No entries to download.');
       return;
     }
-    const header = ['First Name', 'Last Name', 'Email'];
+    const header = ['First Name', 'Last Name', 'Email / Phone'];
     const rows = entriesToDownload.map(e => [ // Fixed: Changed 'entries' to 'entriesToDownload'
       e.firstName || '', 
       e.lastName || '', 
